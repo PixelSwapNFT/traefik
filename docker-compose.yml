@@ -16,6 +16,7 @@ services:
       - --providers.docker=true
       - --providers.docker.exposedByDefault=false
       - --providers.docker.network=web
+      - --providers.file.filename=/traefik/prod/dynamic_conf.yml
     networks:
       - web
     ports:
@@ -23,6 +24,7 @@ services:
       - 443:443
       - 8080:8080
     volumes:
+      - ./traefik:/traefik
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
 
